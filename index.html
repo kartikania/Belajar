@@ -3,247 +3,138 @@ from pathlib import Path
 html = r'''<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pengenalan Laboratorium Genetika Digital: teknologi genomik, bioinformatika, alur kerja, dan etika data genetik.">
-  <title>Laboratorium Genetika Digital</title>
-  <style>
-    :root {
-      --navy: #10243a;
-      --blue: #176b87;
-      --teal: #23a6a1;
-      --mint: #e8f7f4;
-      --ink: #203044;
-      --muted: #637487;
-      --paper: #f6fafb;
-      --white: #fff;
-      --line: #dce8eb;
-      --shadow: 0 18px 45px rgba(16,36,58,.09);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; font-family: Inter, "Segoe UI", Arial, sans-serif;
-      color: var(--ink); background: var(--paper); line-height: 1.65;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
-    header {
-      background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line);
-      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px);
-    }
-    .nav { min-height: 72px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-    .brand { display:flex; align-items:center; gap:11px; font-weight:800; color:var(--navy); }
-    .brand-mark {
-      width:40px; height:40px; display:grid; place-items:center; border-radius:13px;
-      color:white; font-size:21px; background:linear-gradient(135deg,var(--blue),var(--teal));
-    }
-    nav { display:flex; gap:25px; align-items:center; font-size:14px; color:var(--muted); }
-    nav a:hover { color:var(--teal); }
-    .hero {
-      color:white; overflow:hidden; position:relative;
-      background: radial-gradient(circle at 82% 30%, rgba(35,166,161,.38), transparent 28%),
-                  linear-gradient(120deg,#10243a 0%,#174b68 58%,#176b87 100%);
-      padding:92px 0 100px;
-    }
-    .hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:55px; align-items:center; }
-    .eyebrow { text-transform:uppercase; letter-spacing:2px; font-size:12px; font-weight:800; color:#8ce2d8; }
-    h1 { font-size:clamp(38px,5vw,62px); line-height:1.08; margin:16px 0 22px; letter-spacing:-1.8px; }
-    .hero p { color:#d6e7ee; font-size:18px; max-width:620px; margin:0 0 30px; }
-    .button {
-      display:inline-block; padding:12px 20px; border-radius:10px; font-weight:700;
-      background:#65d5c7; color:#0d2a3b; transition:.2s;
-    }
-    .button:hover { transform:translateY(-2px); box-shadow:0 10px 25px #071b2b55; }
-    .hero-art {
-      min-height:300px; display:grid; place-items:center; position:relative;
-    }
-    .helix {
-      width:230px; height:285px; position:relative; border-left:4px solid #8ce2d8;
-      border-right:4px solid #8ce2d8; border-radius:50%; transform:rotate(18deg);
-      filter:drop-shadow(0 0 15px #65d5c777);
-    }
-    .helix:before {
-      content:""; position:absolute; inset:0;
-      background:repeating-linear-gradient(to bottom, transparent 0 17px, #b8fff0 18px 21px, transparent 22px 35px);
-      border-radius:50%;
-    }
-    .orb { position:absolute; border:1px solid #a6eee4; border-radius:50%; }
-    .orb.one { width:300px;height:300px; }
-    .orb.two { width:360px;height:360px; border-style:dashed; opacity:.4; }
-    section { padding:78px 0; }
-    .section-head { max-width:700px; margin-bottom:35px; }
-    .kicker { color:var(--blue); font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:1.8px; }
-    h2 { color:var(--navy); font-size:clamp(28px,3vw,39px); line-height:1.2; margin:9px 0 13px; }
-    .section-head p { color:var(--muted); margin:0; }
-    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .card {
-      background:var(--white); border:1px solid var(--line); border-radius:17px;
-      padding:25px; box-shadow:0 8px 24px rgba(16,36,58,.035);
-    }
-    .card-icon {
-      width:48px;height:48px;display:grid;place-items:center;border-radius:14px;
-      background:var(--mint);font-size:23px;margin-bottom:17px;
-    }
-    h3 { color:var(--navy); margin:0 0 9px; font-size:19px; }
-    .card p { color:var(--muted); margin:0; font-size:14px; }
-    .about { background:#edf6f7; }
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
-    .about-panel {
-      background:linear-gradient(145deg,#12334d,#176b87); color:white; padding:34px;
-      border-radius:20px; box-shadow:var(--shadow);
-    }
-    .about-panel h3 { color:white; font-size:23px; }
-    .about-panel p { color:#d9eaf0; }
-    .check-list { list-style:none; padding:0; margin:20px 0 0; }
-    .check-list li { padding:8px 0; color:#e4f4f2; }
-    .check-list li:before { content:"✓"; color:#80e2d4; font-weight:900; margin-right:10px; }
-    .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; counter-reset:step; }
-    .step { padding:23px 19px; border-top:3px solid var(--teal); background:white; border-radius:0 0 14px 14px; }
-    .step:before { counter-increment:step; content:"0" counter(step); color:var(--teal); font-weight:900; font-size:13px; }
-    .step h3 { margin-top:12px; font-size:17px; }
-    .step p { color:var(--muted); font-size:14px; margin:0; }
-    .ethics { background:#10243a; color:white; }
-    .ethics h2 { color:white; }
-    .ethics .section-head p { color:#c4d5df; }
-    .ethics .card { background:#19364e; border-color:#2a4a61; }
-    .ethics .card h3 { color:white; }
-    .ethics .card p { color:#c4d5df; }
-    .ethics .card-icon { background:#24566a; }
-    .notice {
-      margin-top:25px; padding:17px 20px; border-left:4px solid var(--teal);
-      background:#e8f7f4; color:#315365; border-radius:8px; font-size:14px;
-    }
-    footer { background:#0b1a2a; color:#aebfca; padding:28px 0; font-size:13px; }
-    footer .foot { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
-    @media (max-width:800px) {
-      nav { gap:12px; font-size:12px; }
-      .hero-grid,.about-grid { grid-template-columns:1fr; }
-      .hero { padding:68px 0; }
-      .hero-art { min-height:230px; }
-      .helix { transform:scale(.8) rotate(18deg); }
-      .cards { grid-template-columns:1fr 1fr; }
-      .steps { grid-template-columns:1fr 1fr; }
-    }
-    @media (max-width:540px) {
-      .container { width:min(100% - 28px,1120px); }
-      .nav { align-items:flex-start; padding:14px 0; flex-direction:column; gap:10px; }
-      nav { width:100%; overflow-x:auto; padding-bottom:4px; }
-      nav a { white-space:nowrap; }
-      .cards,.steps { grid-template-columns:1fr; }
-      section { padding:58px 0; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Media praktikum online untuk mempelajari sistem golongan darah ABO dan Rhesus melalui simulasi interaktif.">
+<title>Praktikum Online Cek Golongan Darah</title>
+<style>
+:root{--navy:#142b45;--blue:#236b91;--teal:#20a596;--pale:#eaf7f5;--bg:#f5f8fb;--ink:#24364a;--muted:#63758a;--line:#dce6ed;--white:#fff;--gold:#f0b84b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Segoe UI",Arial,sans-serif}
+.container{width:min(1100px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:#ffffffed;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:850}.brand-icon{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,var(--blue),var(--teal));display:grid;place-items:center;color:white;font-size:21px}
+nav{display:flex;gap:20px;font-size:14px;color:var(--muted)}nav a{text-decoration:none;color:inherit}nav a:hover{color:var(--teal)}
+.hero{padding:75px 0;color:white;background:radial-gradient(circle at 80% 25%,#35c2ae55,transparent 28%),linear-gradient(120deg,#142b45,#1a5a78)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800;color:#9ce9dc}
+h1{font-size:clamp(36px,5vw,58px);line-height:1.1;letter-spacing:-1.5px;margin:14px 0 18px}.hero p{color:#d8e8ef;max-width:640px;font-size:17px}
+.hero-visual{height:230px;display:grid;place-items:center;font-size:115px;filter:drop-shadow(0 12px 20px #071b2b77)}
+.btn{border:0;border-radius:10px;background:var(--teal);color:white;padding:12px 18px;font-weight:750;font-size:15px;cursor:pointer}.btn:hover{filter:brightness(.95);transform:translateY(-1px)}.btn.light{background:#eaf1f5;color:var(--navy)}.btn.outline{background:transparent;border:1px solid #bdd0dc;color:var(--navy)}
+section{padding:64px 0}.section-head{max-width:730px;margin-bottom:28px}.kicker{font-size:12px;letter-spacing:1.8px;text-transform:uppercase;font-weight:850;color:var(--blue)}h2{font-size:clamp(27px,3vw,37px);line-height:1.2;color:var(--navy);margin:8px 0 12px}.section-head p,.muted{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card,.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 24px #17334a08}.symbol{width:46px;height:46px;display:grid;place-items:center;border-radius:13px;background:var(--pale);font-size:22px;margin-bottom:12px}.card h3,.panel h3{color:var(--navy);margin:0 0 7px}.card p{color:var(--muted);font-size:14px;margin:0}
+.soft{background:#eaf2f6}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.step{background:white;padding:18px;border-radius:13px;border-top:3px solid var(--teal)}.step b{font-size:12px;color:var(--teal)}.step h3{font-size:16px;color:var(--navy);margin:7px 0}.step p{font-size:13px;color:var(--muted);margin:0}
+.lab-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;align-items:start}.field{margin:12px 0}.field label{display:block;font-size:14px;font-weight:700;margin-bottom:5px}input,select{width:100%;padding:11px 12px;border:1px solid #cbd9e2;border-radius:9px;background:white;color:var(--ink);font:inherit}input:focus,select:focus{outline:2px solid #8bd9cf;outline-offset:1px}
+.reagents{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.reagent{border:1px solid var(--line);border-radius:13px;padding:12px 8px;text-align:center}.reagent strong{color:var(--navy)}.drop{width:62px;height:62px;border-radius:50%;margin:9px auto;display:grid;place-items:center;color:white;font-weight:850;box-shadow:inset 0 -5px 10px #0002}.drop.a{background:#397fbd}.drop.b{background:#d75b67}.drop.d{background:#826cc1}.reagent label{display:block;font-size:12px;font-weight:700;margin:7px 0 4px}.reagent select{font-size:13px;padding:8px}
+.result{display:none;margin-top:17px;padding:17px;border-radius:13px;background:var(--pale);border:1px solid #bce8df}.result.visible{display:block}.result small{color:var(--muted)}.result strong{display:block;font-size:30px;color:#11756a}.result p{margin:5px 0;color:#315c5a}
+.notice{padding:15px 18px;background:#fff7e7;border-left:4px solid var(--gold);border-radius:9px;color:#745723;font-size:14px;margin-top:18px}
+table{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden;margin-top:18px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);font-size:14px}th{background:#eaf2f6;color:var(--navy)}tr:last-child td{border:0}
+.quiz{background:var(--navy);color:white}.quiz h2{color:white}.quiz .section-head p{color:#cad9e2}.question{background:#203d57;border:1px solid #3a566e;padding:18px;border-radius:13px;margin:12px 0}.question p{font-weight:750;margin:0 0 9px}.question label{display:block;margin:6px 0;color:#e1edf3;font-size:14px}.question input{width:auto;margin-right:8px}.feedback{margin-top:14px;font-weight:750}
+footer{background:#0b1a2a;color:#b7c6d0;padding:24px 0;font-size:13px}
+@media(max-width:780px){.hero-grid,.lab-grid{grid-template-columns:1fr}.hero-visual{height:130px;font-size:85px}.cards{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}nav{gap:11px;font-size:12px}}
+@media(max-width:520px){.nav{align-items:flex-start;flex-direction:column;padding:12px 0}nav{width:100%;overflow:auto;padding-bottom:5px}nav a{white-space:nowrap}.cards,.steps{grid-template-columns:1fr}.reagents{gap:6px}.reagent{padding:9px 4px}section{padding:52px 0}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#beranda"><span class="brand-mark">🧬</span><span>GENETIKA DIGITAL</span></a>
-      <nav aria-label="Navigasi utama">
-        <a href="#tentang">Tentang</a>
-        <a href="#teknologi">Teknologi</a>
-        <a href="#alur">Alur Kerja</a>
-        <a href="#etika">Etika & Keamanan</a>
-      </nav>
-    </div>
-  </header>
+<header><div class="container nav">
+<a class="brand" href="#beranda"><span class="brand-icon">🩸</span> PRAKTIKUM DARAH ONLINE</a>
+<nav aria-label="Navigasi"><a href="#materi">Materi</a><a href="#langkah">Panduan</a><a href="#praktikum">Praktikum</a><a href="#kuis">Kuis</a></nav>
+</div></header>
+<main>
+<section class="hero" id="beranda"><div class="container hero-grid">
+<div><div class="eyebrow">Pembelajaran Biologi Interaktif</div><h1>Praktikum Online Cek Golongan Darah</h1>
+<p>Kenali sistem golongan darah ABO dan Rhesus melalui laboratorium virtual. Lakukan simulasi reaksi, amati hasil, dan pahami bagaimana antigen dikenali oleh reagen.</p>
+<a class="btn" href="#praktikum" style="display:inline-block;text-decoration:none">Mulai praktikum ↓</a></div>
+<div class="hero-visual" role="img" aria-label="Ilustrasi tetes darah">🩸</div>
+</div></section>
 
-  <main>
-    <section class="hero" id="beranda">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Sains • Data • Inovasi</div>
-          <h1>Memahami kehidupan melalui data genetik.</h1>
-          <p>Laboratorium Genetika Digital menggabungkan ilmu genetika, teknologi komputasi, dan bioinformatika untuk mengolah serta memahami informasi biologis secara lebih terstruktur.</p>
-          <a class="button" href="#tentang">Jelajahi laboratorium</a>
-        </div>
-        <div class="hero-art" aria-label="Ilustrasi heliks DNA" role="img">
-          <div class="orb one"></div><div class="orb two"></div><div class="helix"></div>
-        </div>
-      </div>
-    </section>
+<section id="materi"><div class="container">
+<div class="section-head"><div class="kicker">Dasar teori</div><h2>Mengenal golongan darah manusia</h2>
+<p>Golongan darah dikelompokkan berdasarkan antigen pada permukaan sel darah merah. Dalam pembelajaran dasar, sistem yang umum dipelajari adalah ABO dan Rhesus (Rh).</p></div>
+<div class="cards">
+<article class="card"><div class="symbol">🅰️</div><h3>Sistem ABO</h3><p>Antigen A dan B menentukan empat golongan utama: A, B, AB, dan O.</p></article>
+<article class="card"><div class="symbol">🧬</div><h3>Antigen dan antibodi</h3><p>Antigen merupakan penanda pada sel darah merah. Antibodi tertentu dapat bereaksi dengan antigen yang cocok.</p></article>
+<article class="card"><div class="symbol">➕</div><h3>Rhesus (Rh)</h3><p>Faktor Rh yang sering diperiksa adalah antigen D. Jika terdeteksi disebut Rh positif, jika tidak terdeteksi disebut Rh negatif.</p></article>
+</div>
+<div class="notice"><strong>Konsep penting:</strong> Aglutinasi adalah penggumpalan sel darah merah yang dapat terlihat ketika reagen antibodi bereaksi dengan antigen yang sesuai.</div>
+</div></section>
 
-    <section id="tentang">
-      <div class="container">
-        <div class="section-head">
-          <div class="kicker">Mengenal konsepnya</div>
-          <h2>Apa itu Laboratorium Genetika Digital?</h2>
-          <p>Laboratorium genetika digital adalah lingkungan kerja berbasis komputasi yang mendukung analisis data genetik. Sistem digital membantu peneliti menyimpan, mengelola, membandingkan, dan menafsirkan data DNA maupun RNA.</p>
-        </div>
-        <div class="cards">
-          <article class="card"><div class="card-icon">🧬</div><h3>Data Genetik</h3><p>Informasi DNA dan RNA menjadi bahan utama untuk mempelajari variasi genetik, gen, dan hubungan biologis.</p></article>
-          <article class="card"><div class="card-icon">💻</div><h3>Analisis Komputasi</h3><p>Perangkat lunak dan algoritma membantu memproses data dalam jumlah besar secara konsisten dan terukur.</p></article>
-          <article class="card"><div class="card-icon">🔎</div><h3>Interpretasi Ilmiah</h3><p>Hasil analisis ditinjau berdasarkan metode, kualitas data, literatur, dan konteks biologis yang relevan.</p></article>
-        </div>
-      </div>
-    </section>
+<section class="soft" id="langkah"><div class="container">
+<div class="section-head"><div class="kicker">Panduan kegiatan</div><h2>Langkah-langkah praktikum online</h2><p>Praktikum ini dilakukan sepenuhnya melalui simulasi. Siswa tidak perlu mengambil darah atau menggunakan alat tajam.</p></div>
+<div class="steps">
+<div class="step"><b>LANGKAH 01</b><h3>Baca teori</h3><p>Pelajari antigen A, B, D serta fungsi reagen Anti-A, Anti-B, dan Anti-D.</p></div>
+<div class="step"><b>LANGKAH 02</b><h3>Isi identitas</h3><p>Masukkan nama atau kelompok dan kode sampel latihan.</p></div>
+<div class="step"><b>LANGKAH 03</b><h3>Jalankan simulasi</h3><p>Pilih reaksi menggumpal atau tidak menggumpal pada ketiga reagen.</p></div>
+<div class="step"><b>LANGKAH 04</b><h3>Analisis hasil</h3><p>Tekan tombol analisis, amati interpretasi, lalu tuliskan kesimpulan.</p></div>
+</div>
+</div></section>
 
-    <section class="about" id="teknologi">
-      <div class="container about-grid">
-        <div>
-          <div class="kicker">Teknologi utama</div>
-          <h2>Perpaduan biologi dan teknologi informasi</h2>
-          <p>Laboratorium digital dapat memanfaatkan beberapa pendekatan untuk mengubah data biologis menjadi informasi yang dapat dipelajari.</p>
-          <div class="notice"><strong>Bioinformatika</strong> merupakan bidang yang mengembangkan metode komputasi untuk menyimpan, mengolah, dan menganalisis data biologis.</div>
-        </div>
-        <div class="about-panel">
-          <h3>Komponen yang umum digunakan</h3>
-          <p>Contoh teknologi dan sumber daya yang dapat mendukung kegiatan analisis:</p>
-          <ul class="check-list">
-            <li>Basis data sekuens DNA dan RNA</li>
-            <li>Perangkat lunak analisis bioinformatika</li>
-            <li>Komputer atau komputasi awan</li>
-            <li>Visualisasi struktur dan variasi genetik</li>
-            <li>Sistem pencadangan serta pengelolaan data</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<section id="praktikum"><div class="container">
+<div class="section-head"><div class="kicker">Laboratorium virtual</div><h2>Simulasi pemeriksaan golongan darah</h2><p>Tentukan respons setiap reagen berdasarkan pengamatan simulasi. Hasil akan dihitung otomatis.</p></div>
+<div class="lab-grid">
+<div class="panel"><h3>Identitas praktikum</h3>
+<div class="field"><label for="nama">Nama siswa / kelompok</label><input id="nama" placeholder="Contoh: Kelompok 1"></div>
+<div class="field"><label for="kode">Kode sampel simulasi</label><input id="kode" value="LATIHAN-01"></div>
+<div class="notice">Gunakan identitas fiktif atau nama kelompok. Jangan memasukkan data kesehatan pribadi.</div>
+</div>
+<div class="panel"><h3>Pengamatan reaksi reagen</h3><p class="muted" style="font-size:14px;margin:0">Pilih apakah terjadi aglutinasi pada setiap reagen.</p>
+<div class="reagents">
+<div class="reagent"><strong>Anti-A</strong><div class="drop a">A</div><label for="antiA">Hasil pengamatan</label><select id="antiA"><option value="yes">Menggumpal</option><option value="no">Tidak menggumpal</option></select></div>
+<div class="reagent"><strong>Anti-B</strong><div class="drop b">B</div><label for="antiB">Hasil pengamatan</label><select id="antiB"><option value="yes">Menggumpal</option><option value="no">Tidak menggumpal</option></select></div>
+<div class="reagent"><strong>Anti-D</strong><div class="drop d">D</div><label for="antiD">Hasil pengamatan</label><select id="antiD"><option value="yes">Menggumpal</option><option value="no">Tidak menggumpal</option></select></div>
+</div>
+<button class="btn" type="button" onclick="analisis()">Analisis hasil</button>
+<button class="btn light" type="button" onclick="resetSimulasi()">Reset</button>
+<div class="result" id="hasil" aria-live="polite"><small>Hasil interpretasi simulasi</small><strong id="golongan">A+</strong><p id="uraian"></p><p id="identitas"></p></div>
+</div>
+</div>
+<h3 style="color:var(--navy);margin-top:30px">Tabel panduan interpretasi</h3>
+<table><thead><tr><th>Anti-A</th><th>Anti-B</th><th>Anti-D</th><th>Hasil simulasi</th></tr></thead><tbody>
+<tr><td>Menggumpal</td><td>Tidak</td><td>Menggumpal</td><td>A+</td></tr>
+<tr><td>Tidak</td><td>Menggumpal</td><td>Tidak</td><td>B−</td></tr>
+<tr><td>Menggumpal</td><td>Menggumpal</td><td>Menggumpal</td><td>AB+</td></tr>
+<tr><td>Tidak</td><td>Tidak</td><td>Tidak</td><td>O−</td></tr>
+</tbody></table>
+<p class="muted" style="font-size:13px">Tabel menunjukkan contoh pola. Simulasi di atas dapat mengolah seluruh kombinasi reaksi.</p>
+<div class="notice"><strong>Catatan ilmiah dan keselamatan:</strong> Simulasi ini hanya media belajar berdasarkan pola reaksi sederhana, bukan pemeriksaan laboratorium nyata. Penentuan golongan darah seseorang harus dilakukan oleh tenaga terlatih dengan prosedur dan kontrol mutu yang sesuai.</div>
+</div></section>
 
-    <section id="alur">
-      <div class="container">
-        <div class="section-head">
-          <div class="kicker">Proses analisis</div>
-          <h2>Bagaimana alur kerjanya?</h2>
-          <p>Alur dapat berbeda sesuai tujuan penelitian dan jenis data. Secara umum, proses analisis digital meliputi tahapan berikut.</p>
-        </div>
-        <div class="steps">
-          <article class="step"><h3>Pengumpulan data</h3><p>Data genetik diperoleh dari sumber atau eksperimen yang sesuai dan terdokumentasi.</p></article>
-          <article class="step"><h3>Kontrol kualitas</h3><p>Data diperiksa untuk menemukan kesalahan, kontaminasi, atau bagian yang kurang memadai.</p></article>
-          <article class="step"><h3>Analisis bioinformatika</h3><p>Data diproses menggunakan perangkat lunak dan metode analisis yang relevan.</p></article>
-          <article class="step"><h3>Interpretasi hasil</h3><p>Temuan dievaluasi, divisualisasikan, dan dilaporkan dengan batasan yang jelas.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="ethics" id="etika">
-      <div class="container">
-        <div class="section-head">
-          <div class="kicker">Tanggung jawab penelitian</div>
-          <h2>Etika, privasi, dan keamanan data</h2>
-          <p>Informasi genetik dapat bersifat sangat pribadi. Pengelolaannya harus dilakukan secara bertanggung jawab dan sesuai ketentuan yang berlaku.</p>
-        </div>
-        <div class="cards">
-          <article class="card"><div class="card-icon">🔐</div><h3>Perlindungan privasi</h3><p>Batasi akses data, gunakan pengamanan yang memadai, dan hindari membagikan identitas tanpa dasar yang sah.</p></article>
-          <article class="card"><div class="card-icon">📋</div><h3>Persetujuan dan etika</h3><p>Pengambilan serta penggunaan sampel dan data manusia harus mengikuti persetujuan dan kaji etik yang relevan.</p></article>
-          <article class="card"><div class="card-icon">🧪</div><h3>Validasi ilmiah</h3><p>Hasil komputasi bukan kesimpulan otomatis; metode, kualitas data, dan interpretasi perlu ditinjau secara kritis.</p></article>
-        </div>
-        <div class="notice"><strong>Catatan:</strong> Halaman ini merupakan materi pengenalan edukatif, bukan layanan pemeriksaan genetik atau diagnosis medis.</div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container foot">
-      <span>© 2026 Laboratorium Genetika Digital — Materi edukasi</span>
-      <span>Dibuat untuk pengenalan genetika dan bioinformatika</span>
-    </div>
-  </footer>
+<section class="quiz" id="kuis"><div class="container">
+<div class="section-head"><div class="kicker" style="color:#9ce9dc">Evaluasi pembelajaran</div><h2>Kuis pemahaman</h2><p>Jawab tiga pertanyaan berikut untuk menguji pemahamanmu.</p></div>
+<div class="question"><p>1. Reaksi menggumpal dengan reagen Anti-A menunjukkan adanya...</p><label><input type="radio" name="q1" value="a"> Antigen A</label><label><input type="radio" name="q1" value="b"> Antigen D saja</label><label><input type="radio" name="q1" value="c"> Tidak ada antigen A</label></div>
+<div class="question"><p>2. Jika Anti-A dan Anti-B sama-sama menggumpal, golongan ABO adalah...</p><label><input type="radio" name="q2" value="a"> O</label><label><input type="radio" name="q2" value="b"> AB</label><label><input type="radio" name="q2" value="c"> A</label></div>
+<div class="question"><p>3. Reaksi menggumpal dengan Anti-D menunjukkan...</p><label><input type="radio" name="q3" value="a"> Rh positif</label><label><input type="radio" name="q3" value="b"> Rh negatif</label><label><input type="radio" name="q3" value="c"> Golongan O</label></div>
+<button class="btn" type="button" onclick="nilaiKuis()">Periksa jawaban</button><div class="feedback" id="nilai" aria-live="polite"></div>
+</div></section>
+</main>
+<footer><div class="container">© 2026 Praktikum Online Cek Golongan Darah • Media pembelajaran Biologi. Bukan alat diagnosis medis.</div></footer>
+<script>
+function analisis(){
+ const a=document.getElementById('antiA').value==='yes';
+ const b=document.getElementById('antiB').value==='yes';
+ const d=document.getElementById('antiD').value==='yes';
+ const abo=a&&b?'AB':a?'A':b?'B':'O';
+ const rh=d?'+':'−';
+ const antigen=[a?'A':null,b?'B':null,d?'D':null].filter(Boolean);
+ document.getElementById('golongan').textContent=abo+rh;
+ document.getElementById('uraian').textContent='Pola reaksi menunjukkan antigen '+(antigen.length?antigen.join(', '):'A, B, dan D tidak terdeteksi pada simulasi')+'. Interpretasi latihan: golongan '+abo+' dengan Rhesus '+(d?'positif':'negatif')+'.';
+ document.getElementById('identitas').textContent='Nama/kelompok: '+(document.getElementById('nama').value.trim()||'Tidak diisi')+' • Kode: '+(document.getElementById('kode').value.trim()||'Tidak diisi');
+ document.getElementById('hasil').classList.add('visible');
+}
+function resetSimulasi(){
+ document.getElementById('antiA').value='yes';document.getElementById('antiB').value='yes';document.getElementById('antiD').value='yes';
+ document.getElementById('nama').value='';document.getElementById('kode').value='LATIHAN-01';document.getElementById('hasil').classList.remove('visible');
+}
+function nilaiKuis(){
+ const kunci={q1:'a',q2:'b',q3:'a'};let benar=0,jawab=0;
+ for(const q in kunci){const pilih=document.querySelector('input[name="'+q+'"]:checked');if(pilih){jawab++;if(pilih.value===kunci[q])benar++;}}
+ const el=document.getElementById('nilai');
+ if(jawab<3){el.textContent='Jawab semua pertanyaan terlebih dahulu.';el.style.color='#ffd98b';return;}
+ el.textContent='Skor: '+benar+'/3. '+(benar===3?'Bagus! Semua jawaban benar.':'Ayo pelajari kembali materi dan coba lagi.');
+ el.style.color=benar===3?'#9ce9dc':'#ffd98b';
+}
+</script>
 </body>
-</html>
-'''
+</html>'''
 
 path = Path("/mnt/data/index.html")
 path.write_text(html, encoding="utf-8")
-print(f"File berhasil dibuat: {path}")
-
+print(f"File siap: {path} ({path.stat().st_size:,} byte)")
