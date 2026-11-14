@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratorium Genetika Digital</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:Arial,sans-serif;
+ background:#f1f5f9;color:#263445;line-height:1.6
+}
+header{
+ background:linear-gradient(135deg,#312e81,#6366f1);
+ color:white;text-align:center;padding:40px 15px
+}
+header h1{margin:0;font-size:30px}
+nav{
+ background:#3730a3;padding:14px;text-align:center;
+ position:sticky;top:0;z-index:10
+}
+nav a{
+ color:white;text-decoration:none;margin:0 9px;
+ font-size:13px
+}
+.container{max-width:1000px;margin:auto;padding:20px}
+.card{
+ background:white;padding:23px;margin-bottom:20px;
+ border-radius:12px;box-shadow:0 3px 12px #0001
+}
+h2{color:#4338ca}
+h3{color:#4f46e5}
+button{
+ background:#4f46e5;color:white;border:0;
+ padding:11px 18px;border-radius:7px;cursor:pointer;
+ margin:5px
+}
+button:hover{background:#312e81}
+select{
+ width:100%;padding:11px;border:1px solid #cbd5e1;
+ border-radius:7px;margin:8px 0 15px
+}
+input{
+ padding:10px;border:1px solid #cbd5e1;
+ border-radius:6px;width:100%
+}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+td,th{border:1px solid #ddd;padding:12px;text-align:center}
+th{background:#e0e7ff}
+.info{
+ background:#eef2ff;padding:15px;
+ border-left:5px solid #6366f1;border-radius:5px
+}
+.result{
+ background:#ecfdf5;padding:16px;
+ border-left:5px solid #10b981;margin-top:15px;
+ border-radius:5px
+}
+.dna{
+ text-align:center;font-size:25px;
+ letter-spacing:4px;color:#4f46e5;
+ padding:15px;overflow-wrap:anywhere
+}
+footer{
+ background:#312e81;color:white;text-align:center;
+ padding:22px
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🧬 LABORATORIUM GENETIKA DIGITAL</h1>
+<p>Media Pembelajaran dan Praktikum Virtual Genetika</p>
+<p>Mengenal DNA, Gen, Kromosom, dan Pewarisan Sifat</p>
+</header>
+
+<nav>
+<a href="#beranda">Beranda</a>
+<a href="#materi">Materi</a>
+<a href="#dna">DNA</a>
+<a href="#praktikum">Praktikum</a>
+<a href="#punnett">Persilangan</a>
+<a href="#evaluasi">Evaluasi</a>
+</nav>
+
+<div class="container">
+
+<section class="card" id="beranda">
+<h2>Selamat Datang di Laboratorium Genetika Digital</h2>
+<p>
+Laboratorium Genetika Digital merupakan media pembelajaran
+berbasis website yang dirancang untuk membantu siswa
+memahami konsep genetika melalui materi, simulasi, dan
+praktikum virtual.
+</p>
+<div class="info">
+<b>Topik pembelajaran:</b>
+<ul>
+<li>Struktur dan fungsi DNA.</li>
+<li>Gen dan kromosom.</li>
+<li>RNA dan sintesis protein.</li>
+<li>Pewarisan sifat menurut hukum Mendel.</li>
+<li>Persilangan monohibrid dan dihibrid.</li>
+</ul>
+</div>
+</section>
+
+<section class="card" id="materi">
+<h2>1. Pengertian Genetika</h2>
+<p>
+Genetika merupakan cabang ilmu biologi yang mempelajari
+pewarisan sifat dari induk kepada keturunannya serta
+variasi sifat pada makhluk hidup.
+</p>
+
+<h3>Istilah Penting dalam Genetika</h3>
+<table>
+<tr><th>Istilah</th><th>Pengertian</th></tr>
+<tr><td>DNA</td><td>Molekul pembawa informasi genetik.</td></tr>
+<tr><td>Gen</td><td>Bagian DNA yang memiliki fungsi tertentu.</td></tr>
+<tr><td>Kromosom</td><td>Struktur pembawa DNA dan protein.</td></tr>
+<tr><td>Alel</td><td>Bentuk alternatif dari suatu gen.</td></tr>
+<tr><td>Genotipe</td><td>Susunan genetik individu.</td></tr>
+<tr><td>Fenotipe</td><td>Sifat yang dapat diamati.</td></tr>
+</table>
+</section>
+
+<section class="card" id="dna">
+<h2>2. Struktur DNA</h2>
+<p>
+DNA (Deoxyribonucleic Acid) merupakan molekul yang
+menyimpan informasi genetik organisme. DNA memiliki
+struktur heliks ganda dan tersusun atas nukleotida.
+</p>
+
+<h3>Komponen Basa Nitrogen DNA</h3>
+<table>
+<tr><th>Basa</th><th>Pasangan Basa</th></tr>
+<tr><td>Adenin (A)</td><td>Timin (T)</td></tr>
+<tr><td>Guanin (G)</td><td>Sitosin (C)</td></tr>
+</table>
+
+<div class="dna">
+A — T<br>
+G — C<br>
+T — A<br>
+C — G<br>
+A — T
+</div>
+
+<div class="info">
+<b>Informasi:</b> Adenin selalu berpasangan dengan Timin,
+sedangkan Guanin berpasangan dengan Sitosin pada DNA
+untai ganda.
+</div>
+</section>
+
+<section class="card">
+<h2>3. Gen dan Kromosom</h2>
+<p>
+Gen merupakan bagian dari DNA yang membawa informasi
+untuk menghasilkan produk fungsional, seperti RNA atau
+protein. DNA pada sel eukariotik dikemas bersama protein
+menjadi kromosom.
+</p>
+
+<h3>Perbedaan Gen, DNA, dan Kromosom</h3>
+<ul>
+<li>DNA merupakan molekul pembawa informasi genetik.</li>
+<li>Gen merupakan segmen DNA yang memiliki fungsi tertentu.</li>
+<li>Kromosom merupakan struktur pengemasan DNA.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>4. Hukum Pewarisan Sifat Mendel</h2>
+<p>
+Gregor Johann Mendel dikenal sebagai pelopor ilmu genetika
+melalui penelitiannya terhadap tanaman kacang ercis.
+</p>
+
+<h3>Hukum I Mendel</h3>
+<p>
+Hukum segregasi menyatakan bahwa pasangan alel berpisah
+ketika pembentukan gamet sehingga setiap gamet menerima
+satu alel dari pasangan tersebut.
+</p>
+
+<h3>Hukum II Mendel</h3>
+<p>
+Hukum asortasi bebas menjelaskan bahwa alel dari gen yang
+berbeda dapat diwariskan secara independen apabila tidak
+terdapat keterpautan genetik yang memengaruhi pola tersebut.
+</p>
+</section>
+
+<section class="card" id="praktikum">
+<h2>5. Praktikum Virtual: Simulasi DNA</h2>
+<p>
+Masukkan urutan DNA untuk mempelajari pasangan basa
+komplementer.
+</p>
+
+<label><b>Masukkan urutan DNA (A, T, G, C):</b></label>
+<input id="dnaInput" placeholder="Contoh: ATGCCGTA" maxlength="50">
+
+<button onclick="analisisDNA()">Analisis DNA</button>
+<button onclick="resetDNA()" style="background:#64748b">Reset</button>
+
+<div id="dnaResult"></div>
+</section>
+
+<section class="card" id="punnett">
+<h2>6. Praktikum Virtual: Persilangan Monohibrid</h2>
+<p>
+Pada simulasi ini digunakan sifat hipotetis dengan alel
+A sebagai dominan dan a sebagai resesif.
+</p>
+
+<label><b>Genotipe induk pertama:</b></label>
+<select id="parent1">
+<option value="Aa">Aa (Heterozigot)</option>
+<option value="AA">AA (Homozigot dominan)</option>
+<option value="aa">aa (Homozigot resesif)</option>
+</select>
+
+<label><b>Genotipe induk kedua:</b></label>
+<select id="parent2">
+<option value="Aa">Aa (Heterozigot)</option>
+<option value="AA">AA (Homozigot dominan)</option>
+<option value="aa">aa (Homozigot resesif)</option>
+</select>
+
+<button onclick="persilangan()">Lakukan Persilangan</button>
+
+<div id="hasilPersilangan"></div>
+</section>
+
+<section class="card">
+<h2>7. Tabel Pengamatan</h2>
+<p>Contoh hasil persilangan Aa × Aa:</p>
+<table>
+<tr>
+<th>Gamet</th><th>A</th><th>a</th>
+</tr>
+<tr><th>A</th><td>AA</td><td>Aa</td></tr>
+<tr><th>a</th><td>Aa</td><td>aa</td></tr>
+</table>
+
+<h3>Analisis Hasil</h3>
+<table>
+<tr><th>Genotipe</th><th>Jumlah</th><th>Persentase</th></tr>
+<tr><td>AA</td><td>1</td><td>25%</td></tr>
+<tr><td>Aa</td><td>2</td><td>50%</td></tr>
+<tr><td>aa</td><td>1</td><td>25%</td></tr>
+</table>
+<p>Rasio genotipe = 1 : 2 : 1</p>
+<p>Rasio fenotipe = 3 : 1 (dengan dominansi penuh).</p>
+</section>
+
+<section class="card">
+<h2>8. Mutasi Genetik</h2>
+<p>
+Mutasi merupakan perubahan pada materi genetik yang
+dapat terjadi secara spontan atau akibat faktor tertentu.
+Mutasi dapat memengaruhi urutan DNA dan fungsi produk gen.
+</p>
+<h3>Jenis Mutasi</h3>
+<ul>
+<li>Substitusi: pergantian satu basa nitrogen.</li>
+<li>Insersi: penambahan satu atau beberapa basa.</li>
+<li>Delesi: hilangnya satu atau beberapa basa.</li>
+<li>Duplikasi: penggandaan bagian materi genetik.</li>
+</ul>
+</section>
+
+<section class="card" id="evaluasi">
+<h2>9. Evaluasi Pembelajaran</h2>
+
+<p><b>1. Apa fungsi utama DNA?</b></p>
+<select id="q1">
+<option value="">Pilih jawaban</option>
+<option value="a">Menyimpan informasi genetik</option>
+<option value="b">Menghasilkan energi secara langsung</option>
+<option value="c">Mengangkut oksigen</option>
+</select>
+
+<p><b>2. Pasangan basa Adenin pada DNA adalah?</b></p>
+<select id="q2">
+<option value="">Pilih jawaban</option>
+<option value="a">Guanin</option>
+<option value="b">Timin</option>
+<option value="c">Sitosin</option>
+</select>
+
+<p><b>3. Apa yang dimaksud dengan genotipe?</b></p>
+<select id="q3">
+<option value="">Pilih jawaban</option>
+<option value="a">Penampilan fisik</option>
+<option value="b">Susunan genetik individu</option>
+<option value="c">Lingkungan individu</option>
+</select>
+
+<button onclick="nilaiKuis()">Periksa Jawaban</button>
+<div id="nilai"></div>
+</section>
+
+<section class="card">
+<h2>10. Kesimpulan</h2>
+<p>
+Genetika merupakan ilmu yang mempelajari materi genetik
+dan pewarisan sifat. DNA, gen, dan kromosom memiliki
+peranan penting dalam penyimpanan dan pewarisan informasi
+genetik. Melalui simulasi persilangan, siswa dapat
+memahami bagaimana alel diwariskan dari induk kepada
+keturunannya.
+</p>
+</section>
+
+<section class="card">
+<h2>11. Referensi Pembelajaran</h2>
+<ul>
+<li>Campbell Biology – Konsep Genetika.</li>
+<li>Genetics: A Conceptual Approach – Benjamin A. Pierce.</li>
+<li>National Human Genome Research Institute (NHGRI).</li>
+</ul>
+</section>
+
+</div>
+
+<footer>
+<h3 style="color:white">🧬 Laboratorium Genetika Digital</h3>
+<p>Media Pembelajaran Interaktif Biologi</p>
+<p>Belajar Genetika Menjadi Lebih Mudah dan Menarik</p>
+</footer>
+
+<script>
+function analisisDNA(){
+ let dna=document.getElementById("dnaInput").value
+ .toUpperCase().replace(/\s/g,"");
+
+ if(!dna || !/^[ATGC]+$/.test(dna)){
+  document.getElementById("dnaResult").innerHTML=
+  '<div class="result">Masukkan urutan DNA yang valid (A, T, G, C).</div>';
+  return;
+ }
+
+ let pasangan={A:"T",T:"A",G:"C",C:"G"};
+ let hasil=[...dna].map(x=>pasangan[x]).join("");
+
+ document.getElementById("dnaResult").innerHTML=`
+ <div class="result">
+ <h3>Hasil Analisis DNA</h3>
+ <p>Urutan DNA: <b>${dna}</b></p>
+ <p>Pasangan komplementer: <b>${hasil}</b></p>
+ <p>Panjang urutan: ${dna.length} basa</p>
+ </div>`;
+}
+
+function resetDNA(){
+ document.getElementById("dnaInput").value="";
+ document.getElementById("dnaResult").innerHTML="";
+}
+
+function persilangan(){
+ let p1=document.getElementById("parent1").value;
+ let p2=document.getElementById("parent2").value;
+
+ let gamet=x=>x.split("");
+ let g1=gamet(p1),g2=gamet(p2);
+ let hasil=[];
+ let dominan=0;
+
+ let html=`<table><tr><th>Gamet</th>`;
+ g2.forEach(x=>html+=`<th>${x}</th>`);
+ html+=`</tr>`;
+
+ g1.forEach(x=>{
+  html+=`<tr><th>${x}</th>`;
+  g2.forEach(y=>{
+   let gen=(x+y).split("").sort().reverse().join("");
+   hasil.push(gen);
+   html+=`<td>${gen}</td>`;
+  });
+  html+=`</tr>`;
+ });
+
+ html+=`</table>`;
+
+ let AA=hasil.filter(x=>x==="AA").length;
+ let Aa=hasil.filter(x=>x==="Aa").length;
+ let aa=hasil.filter(x=>x==="aa").length;
+ dominan=AA+Aa;
+
+ let total=hasil.length;
+
+ document.getElementById("hasilPersilangan").innerHTML=`
+ <div class="result">
+ <h3>Hasil Persilangan</h3>
+ <p>Induk: ${p1} × ${p2}</p>
+ ${html}
+ <h3>Rasio Genotipe</h3>
+ <p>AA: ${AA}/${total} (${AA/total*100}%)</p>
+ <p>Aa: ${Aa}/${total} (${Aa/total*100}%)</p>
+ <p>aa: ${aa}/${total} (${aa/total*100}%)</p>
+ <h3>Rasio Fenotipe</h3>
+ <p>Dominan: ${dominan/total*100}%</p>
+ <p>Resesif: ${aa/total*100}%</p>
+ </div>`;
+}
+
+function nilaiKuis(){
+ let jawaban={q1:"a",q2:"b",q3:"b"};
+ let benar=0;
+ let kosong=0;
+
+ for(let q in jawaban){
+  let v=document.getElementById(q).value;
+  if(!v)kosong++;
+  else if(v===jawaban[q])benar++;
+ }
+
+ let skor=benar*100/3;
+
+ document.getElementById("nilai").innerHTML=`
+ <div class="result">
+ <h3>Hasil Evaluasi</h3>
+ <p>Jawaban benar: ${benar} dari 3 soal</p>
+ <p>Nilai: ${skor.toFixed(1)}</p>
+ ${kosong?'<p>Masih ada soal yang belum dijawab.</p>':''}
+ </div>`;
+}
+</script>
+
+</body>
+</html>
