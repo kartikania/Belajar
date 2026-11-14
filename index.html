@@ -1,1 +1,293 @@
-Selamat datang di website Kartika Nia
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praktikum Online Golongan Darah</title>
+<style>
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f1f5f9;
+  color:#263445;
+}
+header {
+  background:linear-gradient(135deg,#991b1b,#ef4444);
+  color:white;
+  text-align:center;
+  padding:35px 15px;
+}
+header h1 {margin:0 0 12px}
+nav {
+  background:#7f1d1d;
+  padding:13px;
+  text-align:center;
+  position:sticky;top:0;
+}
+nav a {
+  color:white;
+  text-decoration:none;
+  margin:0 12px;
+  font-size:14px;
+}
+.container {max-width:950px;margin:25px auto;padding:15px}
+.card {
+  background:white;
+  padding:22px;
+  margin-bottom:20px;
+  border-radius:12px;
+  box-shadow:0 3px 12px #00000010;
+}
+h2 {color:#b91c1c}
+button {
+  background:#dc2626;
+  color:white;
+  border:0;
+  padding:12px 20px;
+  border-radius:7px;
+  cursor:pointer;
+  margin-top:10px;
+}
+button:hover {background:#991b1b}
+select,input {
+  padding:10px;
+  border:1px solid #cbd5e1;
+  border-radius:6px;
+  margin:7px 0;
+  width:100%;
+}
+table {width:100%;border-collapse:collapse}
+td,th {border:1px solid #ddd;padding:12px;text-align:center}
+th {background:#fee2e2}
+.result {
+  background:#fff1f2;
+  border-left:5px solid #dc2626;
+  padding:15px;
+  margin-top:15px;
+  border-radius:6px;
+}
+.sample {
+  display:inline-block;
+  width:75px;height:75px;
+  border-radius:50%;
+  background:#b91c1c;
+  border:5px solid #fecaca;
+  margin:8px;
+}
+footer {
+  background:#7f1d1d;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+.small {font-size:13px;color:#64748b}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🩸 Praktikum Online</h1>
+  <h2 style="color:white">Pemeriksaan Golongan Darah Manusia</h2>
+  <p>Laboratorium Virtual Pembelajaran Biologi</p>
+</header>
+
+<nav>
+  <a href="#tujuan">Tujuan</a>
+  <a href="#materi">Materi</a>
+  <a href="#teori">Dasar Teori</a>
+  <a href="#praktikum">Praktikum</a>
+  <a href="#kesimpulan">Kesimpulan</a>
+</nav>
+
+<div class="container">
+
+<section class="card" id="tujuan">
+<h2>1. Tujuan Praktikum</h2>
+<p>Praktikum ini bertujuan untuk:</p>
+<ul>
+<li>Memahami sistem penggolongan darah ABO.</li>
+<li>Mengetahui perbedaan golongan darah A, B, AB, dan O.</li>
+<li>Memahami sistem Rhesus positif dan negatif.</li>
+<li>Mempelajari prinsip reaksi antigen dan antibodi.</li>
+<li>Melakukan simulasi identifikasi golongan darah.</li>
+</ul>
+</section>
+
+<section class="card" id="materi">
+<h2>2. Materi Golongan Darah</h2>
+<p>
+Golongan darah manusia dapat dikelompokkan berdasarkan
+keberadaan antigen pada permukaan sel darah merah.
+Sistem ABO membagi darah menjadi empat golongan:
+</p>
+<table>
+<tr><th>Golongan</th><th>Antigen</th><th>Antibodi dalam plasma</th></tr>
+<tr><td>A</td><td>A</td><td>Anti-B</td></tr>
+<tr><td>B</td><td>B</td><td>Anti-A</td></tr>
+<tr><td>AB</td><td>A dan B</td><td>Tidak ada Anti-A/Anti-B</td></tr>
+<tr><td>O</td><td>Tidak ada A/B</td><td>Anti-A dan Anti-B</td></tr>
+</table>
+<p>
+Selain sistem ABO, terdapat sistem Rhesus (Rh).
+Jika memiliki antigen D, seseorang umumnya disebut Rh positif.
+Jika tidak memiliki antigen D, disebut Rh negatif.
+</p>
+</section>
+
+<section class="card" id="teori">
+<h2>3. Dasar Teori</h2>
+<p>
+Pemeriksaan golongan darah menggunakan prinsip aglutinasi,
+yaitu penggumpalan sel darah merah akibat reaksi antara
+antigen pada permukaan eritrosit dengan antibodi yang sesuai.
+</p>
+<p>Reagen yang digunakan dalam simulasi:</p>
+<ul>
+<li><b>Anti-A:</b> mendeteksi antigen A.</li>
+<li><b>Anti-B:</b> mendeteksi antigen B.</li>
+<li><b>Anti-D:</b> mendeteksi antigen Rhesus D.</li>
+</ul>
+<p>
+Jika terjadi penggumpalan, hasil reaksi dinyatakan positif.
+Jika tidak terjadi penggumpalan, hasil dinyatakan negatif.
+</p>
+</section>
+
+<section class="card" id="praktikum">
+<h2>4. Simulasi Praktikum Online</h2>
+<p>
+Pilih pola reaksi pada masing-masing reagen untuk
+mengetahui hasil simulasi golongan darah.
+</p>
+
+<label>Reaksi Anti-A</label>
+<select id="a">
+<option value="0">Tidak terjadi penggumpalan (-)</option>
+<option value="1">Terjadi penggumpalan (+)</option>
+</select>
+
+<label>Reaksi Anti-B</label>
+<select id="b">
+<option value="0">Tidak terjadi penggumpalan (-)</option>
+<option value="1">Terjadi penggumpalan (+)</option>
+</select>
+
+<label>Reaksi Anti-D (Rhesus)</label>
+<select id="d">
+<option value="0">Tidak terjadi penggumpalan (-)</option>
+<option value="1">Terjadi penggumpalan (+)</option>
+</select>
+
+<button onclick="periksa()">Periksa Golongan Darah</button>
+<button onclick="resetForm()" style="background:#64748b">
+Ulangi
+</button>
+
+<div id="hasil"></div>
+</section>
+
+<section class="card">
+<h2>5. Tabel Pengamatan</h2>
+<table>
+<tr>
+<th>Anti-A</th>
+<th>Anti-B</th>
+<th>Anti-D</th>
+<th>Golongan Darah</th>
+</tr>
+<tr><td>+</td><td>-</td><td>+</td><td>A+</td></tr>
+<tr><td>+</td><td>-</td><td>-</td><td>A-</td></tr>
+<tr><td>-</td><td>+</td><td>+</td><td>B+</td></tr>
+<tr><td>-</td><td>+</td><td>-</td><td>B-</td></tr>
+<tr><td>+</td><td>+</td><td>+</td><td>AB+</td></tr>
+<tr><td>+</td><td>+</td><td>-</td><td>AB-</td></tr>
+<tr><td>-</td><td>-</td><td>+</td><td>O+</td></tr>
+<tr><td>-</td><td>-</td><td>-</td><td>O-</td></tr>
+</table>
+</section>
+
+<section class="card" id="kesimpulan">
+<h2>6. Kesimpulan</h2>
+<p>
+Berdasarkan praktikum virtual, golongan darah dapat
+diidentifikasi melalui reaksi antara antigen pada sel
+darah merah dengan reagen Anti-A, Anti-B, dan Anti-D.
+Pola aglutinasi menentukan golongan ABO dan status Rhesus.
+</p>
+</section>
+
+<section class="card">
+<h2>7. Pertanyaan Evaluasi</h2>
+<ol>
+<li>Apa yang dimaksud dengan aglutinasi?</li>
+<li>Apa perbedaan golongan darah A dan B?</li>
+<li>Mengapa golongan darah AB disebut memiliki antigen A dan B?</li>
+<li>Apa fungsi reagen Anti-D?</li>
+<li>Mengapa pemeriksaan golongan darah penting sebelum transfusi?</li>
+</ol>
+</section>
+
+<div class="card">
+<h2>⚠️ Catatan Keselamatan</h2>
+<p>
+Halaman ini hanya merupakan simulasi pembelajaran.
+Tidak menggunakan darah manusia sungguhan dan tidak dapat
+digunakan untuk menentukan golongan darah seseorang secara
+medis. Pemeriksaan nyata harus dilakukan oleh tenaga
+laboratorium terlatih menggunakan prosedur yang tervalidasi.
+</p>
+</div>
+
+</div>
+
+<footer>
+<p>Praktikum Online Biologi | Materi Sistem Peredaran Darah</p>
+<p>Media Pembelajaran Interaktif</p>
+</footer>
+
+<script>
+function periksa() {
+  let a = document.getElementById("a").value;
+  let b = document.getElementById("b").value;
+  let d = document.getElementById("d").value;
+
+  let golongan = "";
+  if(a==="1" && b==="1") golongan="AB";
+  else if(a==="1") golongan="A";
+  else if(b==="1") golongan="B";
+  else golongan="O";
+
+  let rhesus = d==="1" ? "+" : "-";
+  let hasil = golongan + rhesus;
+
+  let reaksi = `
+    Anti-A: ${a==="1"?"Positif (+)":"Negatif (-)"}<br>
+    Anti-B: ${b==="1"?"Positif (+)":"Negatif (-)"}<br>
+    Anti-D: ${d==="1"?"Positif (+)":"Negatif (-)"}
+  `;
+
+  document.getElementById("hasil").innerHTML = `
+    <div class="result">
+      <h3>Hasil Simulasi Praktikum</h3>
+      <p>${reaksi}</p>
+      <h2>Golongan Darah: ${hasil}</h2>
+      <p>
+      Hasil simulasi menunjukkan pola reaksi yang sesuai
+      dengan golongan darah ${hasil}.
+      </p>
+    </div>
+  `;
+}
+
+function resetForm() {
+  document.getElementById("a").value="0";
+  document.getElementById("b").value="0";
+  document.getElementById("d").value="0";
+  document.getElementById("hasil").innerHTML="";
+}
+</script>
+
+</body>
+</html>
